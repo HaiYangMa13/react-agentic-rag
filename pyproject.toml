@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "react-agentic-rag"
+version = "0.1.0"
+description = "Local offline ReAct agent with future Agentic RAG extension"
+requires-python = ">=3.11"
+dependencies = [
+  "fastapi>=0.115.0",
+  "uvicorn>=0.32.0",
+  "langchain>=0.3.0",
+  "langgraph>=0.2.0",
+  "langchain-ollama>=0.2.0",
+  "langchain-community>=0.3.0",
+  "langchain-huggingface>=0.1.0",
+  "sentence-transformers>=3.0.0",
+  "faiss-cpu>=1.8.0",
+  "pymupdf>=1.24.0",
+  "python-dotenv>=1.0.0"
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.2.0"
+]
+
+[project.scripts]
+react-rag = "react_agentic_rag.cli:main"
+react-rag-api = "react_agentic_rag.api:run"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
